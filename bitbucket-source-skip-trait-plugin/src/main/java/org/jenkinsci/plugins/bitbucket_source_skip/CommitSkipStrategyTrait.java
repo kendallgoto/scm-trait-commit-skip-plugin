@@ -56,11 +56,10 @@ public class CommitSkipStrategyTrait extends CommitStrategyTrait{
         public boolean isApplicableToBuilder(@NonNull Class<? extends SCMBuilder> builderClass) {
             return BitbucketGitSCMBuilder.class.isAssignableFrom(builderClass);
         }
-
     }
 
     /**
-     * Filter that excludes references (branches or pull requests) according to its last commit modification date and the defined retentionDays.
+     * Filter that excludes pull requests according to its last commit message (if it contains [ci skip] or [skip ci], case unsensitive).
      */
     public static class ExcludeCommitPRsSCMHeadFilter extends ExcludePRsSCMHeadFilter {
 
@@ -77,7 +76,7 @@ public class CommitSkipStrategyTrait extends CommitStrategyTrait{
                     BitbucketPullRequest pull = pullIterator.next();
                     if (pull.getSource().getBranch().getName().equals(scmHead.getName())) {
                         String message = pull.getSource().getCommit().getMessage().toLowerCase();
-                        return message.startsWith("[ci skip]") || message.startsWith("[skip ci]");
+                        return message.contains("[ci skip]") || message.contains("[skip ci]");
                     }
                 }
             }

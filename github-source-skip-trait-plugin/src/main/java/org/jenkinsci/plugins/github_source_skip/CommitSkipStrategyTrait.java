@@ -58,7 +58,7 @@ public class CommitSkipStrategyTrait extends CommitStrategyTrait {
     }
 
     /**
-     * Filter that excludes references (branches or pull requests) according to its last commit modification date and the defined retentionDays.
+     * Filter that excludes pull requests according to its last commit message (if it contains [ci skip] or [skip ci], case unsensitive).
      */
     public static class ExcludeCommitPRsSCMHeadFilter extends ExcludePRsSCMHeadFilter{
 
@@ -75,7 +75,7 @@ public class CommitSkipStrategyTrait extends CommitStrategyTrait {
                     GHPullRequest pull = pullIterator.next();
                     if (("PR-" + pull.getNumber()).equals(scmHead.getName())) {
                         String message = pull.getHead().getCommit().getCommitShortInfo().getMessage().toLowerCase();
-                        return message.startsWith("[ci skip]") || message.startsWith("[skip ci]");
+                        return message.contains("[ci skip]") || message.contains("[skip ci]");
                     }
                 }
             }

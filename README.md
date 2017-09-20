@@ -7,4 +7,4 @@ It provides filters for
  - Bitbucket: Filtering pull requests
 
 
-The filtering will be performed matching the last commit message, applying it whether it starts with [skip ci] or [ci skip]. The check is case-insensitive.
+The filtering will be performed matching the last commit message, applying it whether it contains the tags [skip ci] or [ci skip]. The check is case-insensitive.

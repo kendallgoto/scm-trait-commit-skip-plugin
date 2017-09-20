@@ -10,6 +10,6 @@
     <sshPort>-1</sshPort>
     <repositoryType>GIT</repositoryType>
     <traits>
-        <org.jenkinsci.plugins.bitbucket__source__skip.CommitSkipStrategyTrait plugin="bitbucket-source-skip-trait@${project.version}" />
+        <org.jenkinsci.plugins.bitbucket__source__skip.CommitSkipStrategyTrait plugin="bitbucket-source-commit-skip-trait@${project.version}" />
     </traits>
 </com.cloudbees.jenkins.plugins.bitbucket.BitbucketSCMSource>

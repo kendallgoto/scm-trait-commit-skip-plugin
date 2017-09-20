@@ -13,6 +13,6 @@
     <buildForkPRMerge>true</buildForkPRMerge>
     <buildForkPRHead>false</buildForkPRHead>
     <traits>
-        <org.jenkinsci.plugins.github__source__skip.CommitSkipStrategyTrait plugin="github-source-skip-trait@${project.version}" />
+        <org.jenkinsci.plugins.github__source__skip.CommitSkipStrategyTrait plugin="github-source-commit-skip-trait@${project.version}" />
     </traits>
 </org.jenkinsci.plugins.github_branch_source.GitHubSCMSource>

@@ -1,6 +1,6 @@
-# Branch source commit skip traits
+# Commit skip SCM filters
 
-This repo is a collection of traits for several branch-source Jenkins plugins.
+This repo is a collection of traits for several SCM Jenkins plugins.
 
 It provides filters for
  - GitHub: Filtering pull requests 

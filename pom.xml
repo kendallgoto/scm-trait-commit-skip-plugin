@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>scm-trait-commit-skip-parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Commit Skip SCM Behaviour</name>
@@ -37,7 +37,7 @@
         <connection>scm:git:git://github.com/jenkinsci/scm-trait-commit-skip.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/scm-trait-commit-skip.git</developerConnection>
         <url>https://github.com/jenkinsci/scm-trait-commit-skip</url>
-        <tag>0.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>

@@ -2,6 +2,7 @@
 
 ## 0.2.0 (upcoming)
 
+ * New traits allowing branches to be skipped
  * Traits selectable via a Symbol
 
 ## 0.1.1 (10/24/17)

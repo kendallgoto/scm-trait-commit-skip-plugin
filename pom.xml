@@ -118,14 +118,8 @@
         <dependency>
             <groupId>org.jenkins-ci</groupId>
             <artifactId>annotation-indexer</artifactId>
-            <version>1.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci</groupId>
-            <artifactId>symbol-annotation</artifactId>
-            <version>1.9</version>
-            <scope>test</scope>
+            <version>1.12</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
@@ -151,7 +145,11 @@
             <version>1.16</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.jenkins-ci</groupId>
+            <artifactId>symbol-annotation</artifactId>
+            <version>1.13</version>
+        </dependency>
     </dependencies>
 
     <repositories>

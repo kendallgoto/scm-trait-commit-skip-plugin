@@ -2,6 +2,7 @@ package org.jenkinsci.plugins.scm_filter;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
+import org.jenkinsci.Symbol;
 import jenkins.scm.api.SCMHead;
 import jenkins.scm.api.trait.SCMBuilder;
 import jenkins.scm.api.trait.SCMSourceContext;
@@ -35,7 +36,7 @@ public class GitHubCommitSkipTrait extends CommitSkipTrait {
     /**
      * Our descriptor.
      */
-    @Extension
+    @Extension @Symbol("gitHubCommitSkipTrait")
     @SuppressWarnings("unused") // instantiated by Jenkins
     public static class DescriptorImpl extends CommitSkipTraitDescriptorImpl {
 

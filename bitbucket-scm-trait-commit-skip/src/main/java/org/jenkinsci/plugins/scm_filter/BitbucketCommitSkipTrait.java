@@ -6,20 +6,19 @@ import com.cloudbees.jenkins.plugins.bitbucket.PullRequestSCMHead;
 import com.cloudbees.jenkins.plugins.bitbucket.api.BitbucketPullRequest;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
-import org.jenkinsci.Symbol;
 import jenkins.scm.api.SCMHead;
 import jenkins.scm.api.trait.SCMBuilder;
 import jenkins.scm.api.trait.SCMSourceContext;
 import jenkins.scm.api.trait.SCMSourceRequest;
+import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 /**
  * @author witokondoria
  */
-public class BitbucketCommitSkipTrait extends CommitSkipTrait{
+public class BitbucketCommitSkipTrait extends CommitSkipTrait {
 
     /**
      * Constructor for stapler.
@@ -31,7 +30,7 @@ public class BitbucketCommitSkipTrait extends CommitSkipTrait{
 
     @Override
     protected void decorateContext(SCMSourceContext<?, ?> context) {
-        context.withFilter(new BitbucketCommitSkipTrait.ExcludeCommitPRsSCMHeadFilter());
+        context.withFilter(new ExcludeCommitPRsSCMHeadFilter());
     }
 
     /**
@@ -41,17 +40,6 @@ public class BitbucketCommitSkipTrait extends CommitSkipTrait{
     @SuppressWarnings("unused") // instantiated by Jenkins
     public static class DescriptorImpl extends CommitSkipTraitDescriptorImpl {
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String getDisplayName() {
-            return super.getDisplayName();
-        }
-
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public boolean isApplicableToBuilder(@NonNull Class<? extends SCMBuilder> builderClass) {
             return BitbucketGitSCMBuilder.class.isAssignableFrom(builderClass);
@@ -59,21 +47,15 @@ public class BitbucketCommitSkipTrait extends CommitSkipTrait{
     }
 
     /**
-     * Filter that excludes pull requests according to its last commit message (if it contains [ci skip] or [skip ci], case unsensitive).
+     * Filter that excludes pull requests according to its last commit message (if it contains [ci skip] or [skip ci], case insensitive).
      */
-    public static class ExcludeCommitPRsSCMHeadFilter extends ExcludePRsSCMHeadFilter {
-
-        public ExcludeCommitPRsSCMHeadFilter() {
-            super();
-        }
+    private static class ExcludeCommitPRsSCMHeadFilter extends ExcludeByMessageSCMHeadFilter {
 
         @Override
         public boolean isExcluded(@NonNull SCMSourceRequest scmSourceRequest, @NonNull SCMHead scmHead) throws IOException, InterruptedException {
             if (scmHead instanceof PullRequestSCMHead) {
                 Iterable<BitbucketPullRequest> pulls = ((BitbucketSCMSourceRequest) scmSourceRequest).getPullRequests();
-                Iterator<BitbucketPullRequest> pullIterator = pulls.iterator();
-                while (pullIterator.hasNext()) {
-                    BitbucketPullRequest pull = pullIterator.next();
+                for (BitbucketPullRequest pull : pulls) {
                     if (pull.getSource().getBranch().getName().equals(scmHead.getName())) {
                         String message = pull.getSource().getCommit().getMessage();
                         return super.containsSkipToken(message.toLowerCase());

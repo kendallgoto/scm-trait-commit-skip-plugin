@@ -1,7 +1,13 @@
 # Changelog
 
-## 0.2.0 (upcoming)
+## 0.3.0 (upcoming)
 
+ * Traits showing only on its kind of organization (thanks @darxriggs)
+
+## 0.2.0 (02/05/18)
+
+ * Cleaner structure (@darxriggs)
+ * Filtering by author (@nfalco79 & @mryan43)
  * New traits allowing branches to be skipped
  * Traits selectable via a Symbol
 

@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>scm-trait-commit-skip-parent</artifactId>
-    <version>0.3.0</version>
+    <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
 
     <name>Commit Skip SCM Behaviour</name>
@@ -24,7 +24,7 @@
     </licenses>
 
     <properties>
-        <revision>0.3.0</revision>
+        <revision>0.4.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <bitbucket-branch-source.version>2.2.14</bitbucket-branch-source.version>
         <github-branch-source.version>2.3.6</github-branch-source.version>
@@ -40,7 +40,7 @@
         <connection>scm:git:git://github.com/jenkinsci/scm-trait-commit-skip-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/scm-trait-commit-skip-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/scm-trait-commit-skip-plugin</url>
-        <tag>0.3.0</tag>
+        <tag>${scmTag}</tag>
     </scm>
 
     <developers>

@@ -1,10 +1,16 @@
 # Changelog
 
-## 0.3.0 (upcoming)
+## 0.5.0 (upcoming)
+
+## 0.4.0 (02/06/19)
+
+ * REadding a missin branch-api dependency, causing NoClassDefFoundError (@michelzanini)
+
+## 0.3.0 (02/05/19)
 
  * Traits showing only on its kind of organization (thanks @darxriggs)
 
-## 0.2.0 (02/05/18)
+## 0.2.0 (02/05/19)
 
  * Cleaner structure (@darxriggs)
  * Filtering by author (@nfalco79 & @mryan43)
